@@ -1,7 +1,7 @@
 #!/usr/bin/env python3.10
-
 import rospy
-from geometry_msgs.msg import Pose
+from geometry_msgs.msg import Pose, PoseArray
+from std_msgs.msg import String
 from math import sqrt
 
 class PositionTracker:
@@ -9,11 +9,14 @@ class PositionTracker:
         # Inicializa el nodo de ROS
         rospy.init_node('position_tracker', anonymous=True)
         
-        # Suscripción al topic donde recibe la posición estimada (ajusta el nombre del topic según tu sistema)
+        # Suscripción al topic donde recibe la posición estimada
         rospy.Subscriber('/kalman_filter/estimated_position', Pose, self.position_callback)
         
-        # Publicación del rastro de puntos, si es necesario
+        # Publicación del rastro de puntos
         self.track_pub = rospy.Publisher('/person_tracker/path', PoseArray, queue_size=10)
+        
+        # Publicación del estado de "persona detenida"
+        self.stop_pub = rospy.Publisher('/person_tracker/status', String, queue_size=10)
         
         # Lista para almacenar las posiciones de la persona
         self.positions = []
@@ -24,7 +27,7 @@ class PositionTracker:
         self.dist_same = 0.6  # Umbral para "same" (detención)
         
         # Temporizador para actualizar cada segundo
-        self.timer = rospy.Timer(rospy.Duration(2), self.update_position)
+        self.timer = rospy.Timer(rospy.Duration(1), self.update_position)
 
     def euclidean_distance(self, pos1, pos2):
         """Calcula la distancia euclidiana entre dos posiciones"""
@@ -48,8 +51,9 @@ class PositionTracker:
                 self.positions[-1] = current_position
                 rospy.loginfo("Posición cercana, reemplazando el último punto.")
             elif distance < self.dist_same:
-                # Si la posición es muy cercana (persona detenida), no hagas nada
+                # Si la persona está detenida, publica el estado en otro topic
                 rospy.loginfo("Persona detenida, no se guarda el punto.")
+                self.publish_stop_status()
         else:
             # Si la lista está vacía, guarda el primer punto
             self.positions.append(current_position)
@@ -64,10 +68,15 @@ class PositionTracker:
         path_msg.poses = [Pose(position=pos) for pos in self.positions]
         self.track_pub.publish(path_msg)
         
+    def publish_stop_status(self):
+        """Publica un mensaje indicando que la persona está detenida"""
+        stop_msg = String()
+        stop_msg.data = "Persona detenida"
+        self.stop_pub.publish(stop_msg)
+        
     def update_position(self, event):
         """Función de actualización cada segundo"""
         rospy.loginfo("Actualizando la posición...")
-        # Aquí puedes agregar lógica adicional para la actualización si es necesario
 
     def run(self):
         # Mantiene el nodo activo
