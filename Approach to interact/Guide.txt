@@ -1,0 +1,10 @@
+Explicaciones breves de los scripts
+
+approach_smach.py: Es la SMACH que le permite a Pepper localizar a una persona y acercarse a ella. Aun no se ha puesto a prueba.
+
+distance_node.py: Es la funcion que permite tomar la distancia desde la camara de profundidad de Pepper y publicarlo en un topico para que sea accesible al resto de funcionalidades.
+
+point_to_approach.py: Funcion que permite establecer, en funcion de la distancia a la persona y hacia donde mira Pepper, el punto al cual debe moverse para quedar frente a frente. Aun no se ha puesto a prueba
+
+
+Ya para comenzar con estas pruebas de acercamiento, tenemos que volver el stage a la disposicion que tiene segun el mapa ya cargado (revisar la carpeta Navigation)

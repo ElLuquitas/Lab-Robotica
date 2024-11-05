@@ -1,0 +1,8 @@
+Explicaciones breves de los scripts
+
+knowledge.py: skills que permiten acceder al conocimiento que se tiene de un mapa. Probe hacerlo funcionar con Pepper pero no funciono, asi que no se usa.
+
+navigation.py: skills de navegacion, tanto para Pepper como Bender. Dale un vistazo para ver las diferentes cosas que se pueden hacer. Hay algunas que funcionan bien como otras que no y otras que derechamente no funcionan, pero para la navegacion de Pepper de momento se usan muy pocas pero funcionan bien.
+
+
+Estas sirven como referencia para no estar navegando entre tantas carpetas dentro del ws de ROS.

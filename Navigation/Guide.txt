@@ -1,0 +1,11 @@
+Explicaciones breves de los scripts
+
+maqui_nav_test.py: script para ver como funcionan (o si en verdad funcionan) las diferentes skills que se tienen (ver la carpeta General Skills). Por defecto funciona con el mapa 'stage.pgm'
+
+maqui_smach_v1.py: primera version de la SMACH de navegacion general. Se limita a obtener una posicion en especifico y navegar hacia ella. Las posiciones a las cuales puede navegar se encuentran en el archivo 'positions.json'
+
+maqui_smach_v2.py: segunda version de la SMACH de navegacion general. Ademas de tener lo de la primera, se le agrega la opcion de moverse a una sala random del archivo 'positions.json', ademas de recordar la ultima habitacion en la que estuvo.
+
+positions.json: Archivo que contiene las coordenadas de cada una de las habitaciones del stage. Podria ser modificado a futuro? Quizas, para tener una mejor presicion de las posiciones.
+
+stage.pgm: Mapa del stage en el que navegara Pepper. No fue hecho por Pepper xd

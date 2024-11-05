@@ -1,0 +1,9 @@
+Esto es el "grueso" de avances que se tienen en la navegacion de Pepper. Hay cosas que funcionan bien como otras que pueden mejorar, asi que se puede ir viendo en el camino si se necesita hacer retoques
+
+Approach to interact: Scripts para realizar el acercamiento a una persona e interactuar con ella.
+
+Camera Test: Scripts para correr y ver como funcionan la camara rgb y la de profundidad incluidas en Pepper.
+
+General Skills: Contienen copias de las bases con las skills desarrolladas semestres anteriores que se pueden aplicar a Pepper. Algunas funcionan bien, otras no tanto ya que son nativas de Bender. Usarlos solo como referencia.
+
+Navigation: Scripts con la SMACH de Navegacion de Pepper (2 versiones), un script de prueba, posiciones del stage y el mapa del stage.

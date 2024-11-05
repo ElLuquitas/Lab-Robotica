@@ -1,0 +1,8 @@
+Explicaciones breves de los scripts
+
+depth_camera_test.py: permite acceder a la informacion en tiempo real de la camara de profundidad de Pepper, mostrando la distancia estimada hacia la boundingbox marcada en la ventana que aparece (un promedio de pixeles).
+
+stereo_camera_test: permite acceder a la informacion en tiempo real de la camara rgb de Pepper. Solo sirve para eso.
+
+
+Como dijo el profe en la reu del 03/09, tendremos que cambiar el enfoque para la toma de la profundidad, por lo que puede quedar completamente obsoleto el test.
